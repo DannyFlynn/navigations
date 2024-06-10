@@ -1,18 +1,29 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import { motion,  useAnimationControls } from "framer-motion"
+
+
+const variants = {
+  open: { opacity: 1, x: "0%", width: "100%", height: "100%", transition: { type: "smooth", duration: 0.50 }, },
+  closed: { opacity: 0, x: "100%", width: "0%", height: "0%", transition: { type: "smooth", duration: 0.75 } },
+}
+
 const Nav = () => {
 
     const [showNav, setShowNav] = useState(false)
+    const navigationControls = useAnimationControls()
 
     useEffect(() => {
 
       if(showNav){
 
         document.body.style.overflowY = "hidden";
+        navigationControls.start("open")
 
       } else {
 
         document.body.style.overflowY = "auto";
+        navigationControls.start("closed")
 
 
       }
@@ -35,19 +46,23 @@ const Nav = () => {
             {showNav ? 'X' : 'M'}
         </span>
       </button>
-      <div className={`w-full h-screen flex lg:hidden  absolute z-30 transition-transform ease-in-out duration-700 ${
-          showNav ? "translate-x-0" : "translate-x-full"
-        }`}>
-     <div className="w-1/2 bg-black bg-opacity-50" onClick={() => setShowNav(!showNav)}></div>
+      <motion.div  initial="closed"
+                variants={variants}
+                animate={navigationControls}
+                style={{ position: 'fixed', top: 0, right: 0, zIndex: 30 }}
+                className="flex text-white"
+                
+>
+     <div className="flex-1 bg-black bg-opacity-50" onClick={() => setShowNav(!showNav)}></div>
      <ul
-        className="w-1/2 bg-black flex flex-col items-center justify-evenly" 
+        className="flex-1 bg-black flex flex-col items-center justify-evenly" 
       >
             <li><a href="#" >link1</a></li>
             <li><a href="#" >link2</a></li>
             <li><a href="#" >link3</a></li>
             <li><a href="#" >link4</a></li>
         </ul> 
-        </div>
+        </motion.div>
     </nav>
   )
 }
