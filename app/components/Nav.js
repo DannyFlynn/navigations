@@ -20,7 +20,7 @@ const Nav = () => {
     }, [showNav])
 
   return (
-    <nav className="flex justify-between bg-black text-white h-24">
+    <nav className="flex justify-between bg-black text-white h-24 text-2xl">
        <div className="w-1/2 lg:w-3/5 p-4">
        <h2>NAV</h2>
        </div>
@@ -31,7 +31,7 @@ const Nav = () => {
             <li><a href="#">link4</a></li>
       </ul>
       <button className="flex lg:hidden absolute top-3 right-3 z-40" onClick={() => setShowNav(!showNav)}>
-        <span className={`block transition-transform ease-in-out duration-700 ${showNav ? "rotate-180" : "-rotate-180"}`}>
+        <span className={`block  transition-transform ease-in-out duration-700 ${showNav ? "rotate-180" : "-rotate-180"}`}>
             {showNav ? 'X' : 'M'}
         </span>
       </button>
@@ -40,12 +40,12 @@ const Nav = () => {
         }`}>
      <div className="w-1/2 bg-black bg-opacity-50" onClick={() => setShowNav(!showNav)}></div>
      <ul
-        className="w-1/2 bg-black"
+        className="w-1/2 bg-black flex flex-col items-center justify-evenly" 
       >
-            <li><a href="#">link1</a></li>
-            <li><a href="#">link2</a></li>
-            <li><a href="#">link3</a></li>
-            <li><a href="#">link4</a></li>
+            <li><a href="#" >link1</a></li>
+            <li><a href="#" >link2</a></li>
+            <li><a href="#" >link3</a></li>
+            <li><a href="#" >link4</a></li>
         </ul> 
         </div>
     </nav>
