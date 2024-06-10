@@ -4,8 +4,8 @@ import { motion,  useAnimationControls } from "framer-motion"
 
 
 const variants = {
-  open: { opacity: 1, x: "0%", width: "100%", height: "100%", transition: { type: "smooth", duration: 0.50 }, },
-  closed: { opacity: 0, x: "100%", width: "0%", height: "0%", transition: { type: "smooth", duration: 0.75 } },
+  open: { opacity: 1, y: "0%", width: "100%", height: "100%", transition: { type: "smooth", duration: 0.50 }, },
+  closed: { opacity: 0, y: "-100%", width: "0%", height: "0%", transition: { type: "smooth", duration: 0.75 } },
 }
 
 const Nav = () => {
@@ -49,19 +49,19 @@ const Nav = () => {
       <motion.div  initial="closed"
                 variants={variants}
                 animate={navigationControls}
-                style={{ position: 'fixed', top: 0, right: 0, zIndex: 30 }}
-                className="flex text-white"
+                style={{ position: 'fixed', top: 0,  zIndex: 30 }}
+                className="flex flex-col text-white"
                 
 >
-     <div className="flex-1 bg-black bg-opacity-50" onClick={() => setShowNav(!showNav)}></div>
      <ul
-        className="flex-1 bg-black flex flex-col items-center justify-evenly" 
+        className="w-full h-2/3 sm:h-screen md:h-full lg:h-2/3 bg-black flex flex-col items-center justify-evenly" 
       >
             <li><a href="#" >link1</a></li>
             <li><a href="#" >link2</a></li>
             <li><a href="#" >link3</a></li>
             <li><a href="#" >link4</a></li>
         </ul> 
+        <div className="w-full h-1/3 sm:h-0 md:h-0 lg:h-1/3 bg-black bg-opacity-50" onClick={() => setShowNav(!showNav)}></div>
         </motion.div>
     </nav>
   )
