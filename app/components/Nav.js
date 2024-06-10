@@ -35,18 +35,18 @@ const Nav = () => {
             {showNav ? 'X' : 'M'}
         </span>
       </button>
-      <div className={`w-full h-screen flex lg:hidden  absolute z-30 transition-transform ease-in-out duration-700 ${
-          showNav ? "translate-x-0" : "translate-x-full"
+      <div className={`w-full h-screen flex flex-col lg:hidden  absolute z-30 transition-transform ease-in-out duration-700 ${
+          showNav ? "translate-y-0" : "-translate-y-full"
         }`}>
-     <div className="w-1/2 bg-black bg-opacity-50" onClick={() => setShowNav(!showNav)}></div>
      <ul
-        className="w-1/2 bg-black flex flex-col items-center justify-evenly" 
+        className="w-full h-2/3 sm:h-screen md:h-2/3 bg-black flex flex-col items-center justify-evenly" 
       >
             <li><a href="#" >link1</a></li>
             <li><a href="#" >link2</a></li>
             <li><a href="#" >link3</a></li>
             <li><a href="#" >link4</a></li>
         </ul> 
+        <div className="w- h-1/3 sm:h-0 md:h-1/3 bg-black bg-opacity-50" onClick={() => setShowNav(!showNav)}></div>
         </div>
     </nav>
   )
